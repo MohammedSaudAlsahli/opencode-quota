@@ -658,6 +658,59 @@ export type OpenCodeGoResult =
   | QuotaError
   | null;
 
+// =============================================================================
+// Ollama Cloud Types
+// =============================================================================
+
+/** Ollama auth entry in auth.json */
+export interface OllamaAuthData {
+  type: "api";
+  key: string;
+}
+
+/** Ollama Cloud /api/me response */
+export interface OllamaMeResponse {
+  ID?: string;
+  CreatedAt?: string;
+  Email?: string;
+  Name?: string;
+  Plan?: string;
+  /** Go sql.NullTime pattern: {Time, Valid} */
+  SubscriptionPeriodStart?: { Time?: string; Valid?: boolean };
+  /** Go sql.NullTime pattern: {Time, Valid} */
+  SubscriptionPeriodEnd?: { Time?: string; Valid?: boolean };
+  session_usage_percent?: number;
+  session_used_percentage?: number;
+  session_percent?: number;
+  session_usage?: number;
+  weekly_usage_percent?: number;
+  weekly_used_percentage?: number;
+  weekly_percent?: number;
+  weekly_usage?: number;
+  usage_percent?: number;
+  used_percentage?: number;
+  usage_percentage?: number;
+  [key: string]: unknown;
+}
+
+/** Ollama Cloud quota windows */
+export interface OllamaQuotaWindow {
+  percentRemaining: number;
+  resetTimeIso?: string;
+}
+
+/** Result from fetching Ollama Cloud quota */
+export interface OllamaQuotaResult {
+  success: true;
+  label: string;
+  windows: {
+    session?: OllamaQuotaWindow;
+    weekly?: OllamaQuotaWindow;
+  };
+}
+
+export type OllamaResult = OllamaQuotaResult | QuotaError | null;
+
 /** Cached toast data */
 export interface CachedToast {
   message: string;
