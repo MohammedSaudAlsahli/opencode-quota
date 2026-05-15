@@ -25,6 +25,7 @@ import {
 } from "./minimax-coding-plan.js";
 import { opencodeGoProvider } from "./opencode-go.js";
 import { kimiCodeProvider } from "./kimi-code.js";
+import { ollamaProvider } from "./ollama.js";
 
 export function getProviders(): QuotaProvider[] {
   // Order here defines display ordering in the toast.
@@ -47,5 +48,6 @@ export function getProviders(): QuotaProvider[] {
     minimaxChinaCodingPlanProvider,
     kimiCodeProvider,
     opencodeGoProvider,
+    ollamaProvider,
   ];
 }

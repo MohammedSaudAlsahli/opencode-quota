@@ -40,4 +40,9 @@ export type {
   GoogleModelQuota,
   MiniMaxResult,
   MiniMaxResultEntry,
+  OllamaAuthData,
+  OllamaMeResponse,
+  OllamaQuotaWindow,
+  OllamaQuotaResult,
+  OllamaResult,
 } from "./lib/types.js";
